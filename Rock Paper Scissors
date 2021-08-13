@@ -1,0 +1,68 @@
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+end_game = False
+while not end_game:
+    print("Let's Play Rock, Paper, Scissors.")
+    your_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper, or 2 for Scissors.: \n"))
+
+    choices = [rock, paper, scissors]
+    choices_word = ["rock", "paper", "scissors"]
+
+    if int(your_choice) == 0:
+        print("You chose rock" + rock)
+    elif int(your_choice) == 1:
+        print("You chose paper\n" + paper)
+    else:
+        print("You chose scissors\n" + scissors)
+
+
+    import random
+
+    computer_choice = random.randint(0, 2)
+    print(f"Computer chose...{choices_word[computer_choice]}")
+    print(choices[computer_choice])
+
+
+    # Ending results
+    if your_choice == 0 and computer_choice == 2:
+        end_game = True
+        print("You Win!")
+    elif computer_choice == 0 and your_choice == 2:
+        print("You Lose")
+    elif computer_choice == 0 and your_choice == 1:
+        end_game = True
+        print("You win!")
+    elif computer_choice == 1 and your_choice == 2:
+        end_game = True
+        print("You win!")
+    elif computer_choice > your_choice:
+        print("You Lose")
+    elif computer_choice == your_choice:
+        print("It's a draw")
+    else:
+        print("Wrong choice. you lose.")
