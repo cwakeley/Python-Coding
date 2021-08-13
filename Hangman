@@ -1,0 +1,99 @@
+def split(x):
+    return [char for char in x]
+
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+from Hangman_words import word_list
+import random
+lives = 6
+
+chosen_word = random.choice(word_list)
+# print(f'Pssst, the solution is {split(chosen_word)}.')
+display = []
+
+
+
+for i in range(len(chosen_word)):
+    display += "_"
+print(display)
+
+end_of_game = False
+
+while not end_of_game:
+    guess = input("Guess a letter!: ").lower()
+
+    for i in range(len(chosen_word)):
+        check_letter = chosen_word[i]
+        if guess == check_letter:
+            display[i] = check_letter
+    if guess not in chosen_word:
+        lives -= 1
+        if lives == 0:
+            end_of_game = True
+            print("you lose")
+    print(display)
+
+    if "_" not in display:
+        end_of_game = True
+        print("Congrats you won!")
+
+    print(stages[lives])
+
+
+
+
+
